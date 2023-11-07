@@ -7,6 +7,7 @@ export const useNotes = create<UseNotes>()(
     (set, get) => ({
       notes: [],
       selected: [],
+      search: "",
       add: (newNote) => {
         let maxId = 1;
         const { notes } = get();
@@ -23,7 +24,8 @@ export const useNotes = create<UseNotes>()(
       removeSelected: () =>
         set(({ notes, selected }) => ({
           notes: notes.filter((note) => !selected.includes(note.id)),
-        }))
+        })),
+      setSearch: (search) => set(() => ({ search })),
     }),
     {
       name: "notes",
