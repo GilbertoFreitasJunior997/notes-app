@@ -6,7 +6,8 @@ export const useNotes = create<UseNotes>()(
   persist(
     (set, get) => ({
       notes: [],
-      addNote: (newNote) => {
+      selected: [],
+      add: (newNote) => {
         let maxId = 1;
         const { notes } = get();
         notes.forEach((note) => {
@@ -16,12 +17,13 @@ export const useNotes = create<UseNotes>()(
           notes: [...notes, { ...newNote, id: maxId }],
         }));
       },
-      removeNote: (id) =>
+      remove: (id) =>
         set(({ notes }) => ({ notes: notes.filter((note) => note.id !== id) })),
-      removeMultipleNotes: (ids) =>
-        set(({ notes }) => ({
-          notes: notes.filter((note) => !ids.includes(note.id)),
-        })),
+      select: (id) => set(({ selected }) => ({ selected: [...selected, id] })),
+      removeSelected: () =>
+        set(({ notes, selected }) => ({
+          notes: notes.filter((note) => !selected.includes(note.id)),
+        }))
     }),
     {
       name: "notes",

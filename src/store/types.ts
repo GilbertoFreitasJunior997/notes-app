@@ -8,12 +8,14 @@ export type NewNote = Omit<Note, "id">;
 
 type NoteProps = {
   notes: Note[];
+  selected: number[];
 };
 
 type NoteActions = {
-  addNote(newNote: NewNote): void;
-  removeNote(id: number): void;
-  removeMultipleNotes(ids: number[]): void;
+  add(newNote: NewNote): void;
+  remove(id: number): void;
+  select(id: number): void;
+  removeSelected(): void;
 };
 
 export type UseNotes = NoteProps & NoteActions;
