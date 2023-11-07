@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IoMdTrash } from "react-icons/io";
-import { ModalCreateNote } from "@/components/modal-create-note";
+import { ModalConfigureNote } from "@/components/modal-configure-note";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useNotes } from "@/store";
 import { useSelector } from "@/store/use-selector";
@@ -29,7 +29,7 @@ export const Topbar = () => {
           <IoMdTrash />
           <span className="pl-1">Remove all selected</span>
         </Button>
-        <ModalCreateNote />
+        <ModalConfigureNote />
         <ThemeToggle />
       </div>
     </section>

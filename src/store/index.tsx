@@ -9,21 +9,34 @@ export const useNotes = create<UseNotes>()(
       selected: [],
       search: "",
       add: (newNote) => {
-        let maxId = 1;
         const { notes } = get();
-        notes.forEach((note) => {
-          if (note.id > maxId) maxId = note.id;
-        });
+        console.log(notes);
+        const id = Math.max(...notes.map((note) => note.id), 0) + 1;
+        console.log(id);
+
         set(({ notes }) => ({
-          notes: [...notes, { ...newNote, id: maxId }],
+          notes: [...notes, { ...newNote, id }],
         }));
       },
+      update: (newNote) =>
+        set(({ notes }) => ({
+          notes: notes.map((note) => (note.id === newNote.id ? newNote : note)),
+        })),
       remove: (id) =>
-        set(({ notes }) => ({ notes: notes.filter((note) => note.id !== id) })),
-      select: (id) => set(({ selected }) => ({ selected: [...selected, id] })),
+        set(({ notes, selected }) => ({
+          notes: notes.filter((note) => note.id !== id),
+          selected: selected.filter((noteId) => noteId !== id),
+        })),
+      toggleSelect: (id) =>
+        set(({ selected }) => ({
+          selected: selected.includes(id)
+            ? selected.filter((noteId) => noteId !== id)
+            : [...selected, id],
+        })),
       removeSelected: () =>
         set(({ notes, selected }) => ({
           notes: notes.filter((note) => !selected.includes(note.id)),
+          selected: [],
         })),
       setSearch: (search) => set(() => ({ search })),
     }),

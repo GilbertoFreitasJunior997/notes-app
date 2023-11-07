@@ -14,8 +14,9 @@ type NoteProps = {
 
 type NoteActions = {
   add(newNote: NewNote): void;
+  update(note: Note): void;
   remove(id: number): void;
-  select(id: number): void;
+  toggleSelect(id: number): void;
   removeSelected(): void;
   setSearch(search: string): void;
 };
