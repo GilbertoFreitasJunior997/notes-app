@@ -1,7 +1,7 @@
 export type Note = {
   id: number;
   title: string;
-  description: string;
+  description?: string;
 };
 
 export type NewNote = Omit<Note, "id">;

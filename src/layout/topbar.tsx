@@ -1,16 +1,7 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IoMdTrash } from "react-icons/io";
-import { MdAdd } from "react-icons/md";
+import { ModalCreateNote } from "@/components/modal-create-note";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useNotes } from "@/store";
 import { useSelector } from "@/store/use-selector";
@@ -38,24 +29,7 @@ export const Topbar = () => {
           <IoMdTrash />
           <span className="pl-1">Remove all selected</span>
         </Button>
-
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button size="icon">
-              <MdAdd />
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-
+        <ModalCreateNote />
         <ThemeToggle />
       </div>
     </section>
