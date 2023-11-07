@@ -25,7 +25,7 @@ export const Note = (props: NoteProps) => {
   const handleSelect = () => toggleSelect(id);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key !== " " && e.key !== "Enter") return;
+    if (e.key !== "Enter") return;
 
     handleSelect();
   };
