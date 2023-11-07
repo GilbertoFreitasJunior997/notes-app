@@ -20,7 +20,7 @@ export const Topbar = () => {
   );
 
   return (
-    <section className="w-full h-16 flex justify-between items-center p-5">
+    <section className="w-full h-16 flex justify-between items-center p-5 dark:bg-slate-950 bg-slate-50 rounded-t-md px-5">
       <div></div>
       <div className="flex gap-2 items-center">
         <Button
